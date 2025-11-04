@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Biodiversity Quiz Icon</title>
+  <desc id="desc">Leaf and globe icon representing biodiversity.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1f6848" />
+      <stop offset="100%" stop-color="#3fb97b" />
+    </linearGradient>
+    <linearGradient id="leaf" x1="20%" y1="80%" x2="80%" y2="20%">
+      <stop offset="0%" stop-color="#9be18f" />
+      <stop offset="100%" stop-color="#3c9b5f" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#bg)" />
+  <g transform="translate(12,10)">
+    <path
+      d="M30 4c5 2 9 7 8 13-1 10-12 16-22 10-6-4-8-11-5-16 4-6 11-8 19-7z"
+      fill="#72cdf0"
+      opacity="0.9"
+    />
+    <path
+      d="M11 22c7-4 16-5 22 0-3 6-10 11-16 12-8 1-15-5-15-12 0-4 3-8 9-11-1 4-1 8 0 11z"
+      fill="url(#leaf)"
+    />
+    <path
+      d="M18 21c4-1 7 0 9 2-3 4-8 5-11 3-2-1-2-4 2-5z"
+      fill="#2f7b4f"
+      opacity="0.6"
+    />
+    <circle cx="24" cy="9" r="3" fill="#ffffff" opacity="0.7" />
+  </g>
+</svg>

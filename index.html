@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Biodiversity Adventure Quiz</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
   </head>
   <body>
     <header class="hero">
@@ -31,6 +32,11 @@
         <div class="status__score">
           <span class="status__label">Score:</span>
           <span id="score-display" class="status__value">0</span>
+        </div>
+        <div class="status__tools">
+          <button id="open-glossary" class="btn btn--ghost" type="button">
+            Words to Know
+          </button>
         </div>
       </section>
 
@@ -67,6 +73,33 @@
           </a>
         </div>
       </section>
+
+      <aside
+        class="glossary hidden"
+        id="glossary-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="glossary-title"
+        tabindex="-1"
+      >
+        <div class="glossary__content">
+          <button
+            id="close-glossary"
+            class="glossary__close"
+            type="button"
+            aria-label="Close words to know panel"
+          >
+            &times;
+          </button>
+          <h2 id="glossary-title">Words to Know</h2>
+          <p class="glossary__intro">
+            Understanding these science words will help you solve the quiz with
+            confidence.
+          </p>
+          <dl id="glossary-list" class="glossary__list"></dl>
+        </div>
+      </aside>
+      <div class="glossary-backdrop hidden" id="glossary-backdrop"></div>
     </main>
 
     <footer class="footer">

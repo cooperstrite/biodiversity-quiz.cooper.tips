@@ -9,7 +9,7 @@ const quizData = [
     ],
     correctIndex: 1,
     explanation:
-      'Biodiversity includes all the different plants, animals, fungi, and microorganisms living together and interacting in an ecosystem.',
+      'Biodiversity is the variety of life in the world or in a particular habitat or ecosystem, including the diversity of species, genes, and ecosystems.',
   },
   {
     question: 'Why is a rainforest considered a biodiversity hotspot?',
@@ -21,7 +21,7 @@ const quizData = [
     ],
     correctIndex: 2,
     explanation:
-      'Rainforests pack a huge number of species into tight spaces. Many of those species are found nowhere else on Earth.',
+      'A biodiversity hotspot is a place that has exceptional numbers of unique species but is under serious threat, and rainforests fit that definition.',
   },
   {
     question: 'Which human activity most often reduces biodiversity?',
@@ -33,7 +33,7 @@ const quizData = [
     ],
     correctIndex: 3,
     explanation:
-      'When forests are cleared, the animals and plants that once lived there lose their homes, making the area less diverse.',
+      'Clearing forests destroys habitats, and habitat loss is the leading cause of biodiversity decline around the globe.',
   },
   {
     question: 'What is an endangered species?',
@@ -45,7 +45,7 @@ const quizData = [
     ],
     correctIndex: 2,
     explanation:
-      'Endangered species have very small populations. Without protection, they could become extinct.',
+      'An endangered species is one that is seriously at risk of extinction, so it needs protection to keep its population from disappearing.',
   },
   {
     question: 'How do pollinators like bees and butterflies support biodiversity?',
@@ -57,7 +57,7 @@ const quizData = [
     ],
     correctIndex: 2,
     explanation:
-      'When pollinators visit flowers, they transfer pollen. This allows plants to produce seeds, fruit, and the next generation of plants.',
+      'Pollination happens when animals move pollen between flowers, allowing plants to produce seeds and fruits for the next generation.',
   },
   {
     question:
@@ -70,7 +70,7 @@ const quizData = [
     ],
     correctIndex: 0,
     explanation:
-      'Invasive species often spread quickly and compete for food, sunlight, or space. Native species can struggle to survive.',
+      'An invasive species is a non-native organism that spreads quickly and causes harm to the environment, economy, or human health, often squeezing out native species.',
   },
   {
     question: 'What do food webs show us?',
@@ -82,7 +82,7 @@ const quizData = [
     ],
     correctIndex: 0,
     explanation:
-      'Food webs map out who eats whom. They highlight how plants, animals, and decomposers all rely on one another.',
+      'A food web shows the interconnection of food chains in an ecosystem and how energy flows among producers, consumers, and decomposers.',
   },
   {
     question: 'Which choice is a simple action you can take to support biodiversity?',
@@ -94,7 +94,7 @@ const quizData = [
     ],
     correctIndex: 1,
     explanation:
-      'Native plants help local pollinators and other wildlife find the food and shelter they evolved to use.',
+      'Native flowers evolved with local wildlife, so they supply the nectar, pollen, and shelter that native pollinators rely on.',
   },
   {
     question: 'What happens when a keystone species disappears?',
@@ -106,7 +106,7 @@ const quizData = [
     ],
     correctIndex: 0,
     explanation:
-      'Keystone species have a huge influence on their ecosystems. Without them, food webs and habitats can fall apart.',
+      'A keystone species has an outsized effect on its ecosystem; when it disappears, the community structure can change dramatically or collapse.',
   },
   {
     question: 'Why do scientists monitor biodiversity over time?',
@@ -118,7 +118,60 @@ const quizData = [
     ],
     correctIndex: 1,
     explanation:
-      'Keeping records helps scientists notice problems early, plan conservation actions, and celebrate improvements.',
+      'Tracking biodiversity over time helps scientists spot changes early, guide conservation decisions, and check ecosystem health.',
+  },
+];
+
+const glossaryTerms = [
+  {
+    term: 'Biodiversity',
+    definition:
+      'The variety of life in the world or in a specific habitat or ecosystem, including the diversity of species, genes, and ecosystems.',
+  },
+  {
+    term: 'Ecosystem',
+    definition:
+      'A community of living organisms interacting with each other and with the nonliving parts of their environment.',
+  },
+  {
+    term: 'Biodiversity hotspot',
+    definition:
+      'A region that has an exceptional concentration of unique species but is threatened with destruction.',
+  },
+  {
+    term: 'Endangered species',
+    definition:
+      'A species that is seriously at risk of extinction without protection and recovery efforts.',
+  },
+  {
+    term: 'Pollinator',
+    definition:
+      'An animal that moves pollen between flowers, enabling plants to produce seeds and fruit.',
+  },
+  {
+    term: 'Invasive species',
+    definition:
+      'A non-native organism that spreads quickly and causes harm to the environment, economy, or human health.',
+  },
+  {
+    term: 'Food web',
+    definition:
+      'A diagram that shows how multiple food chains overlap and how energy moves through an ecosystem.',
+  },
+  {
+    term: 'Keystone species',
+    definition:
+      'A species whose impact on an ecosystem is much greater than its abundance, helping hold the community together.',
+  },
+  {
+    term: 'Native species',
+    definition:
+      'A species that occurs naturally in a region or ecosystem without human introduction.',
+  },
+  {
+    term: 'Conservation',
+    definition:
+      'The protection and careful management of natural resources and biodiversity.',
   },
 ];
 
@@ -148,6 +201,11 @@ const retakeBtn = document.getElementById('retake-btn');
 const scoreDisplay = document.getElementById('score-display');
 const questionCounter = document.getElementById('question-counter');
 const progressBar = document.getElementById('progress-bar');
+const glossaryBtn = document.getElementById('open-glossary');
+const glossaryPanel = document.getElementById('glossary-panel');
+const glossaryList = document.getElementById('glossary-list');
+const closeGlossaryBtn = document.getElementById('close-glossary');
+const glossaryBackdrop = document.getElementById('glossary-backdrop');
 
 const state = {
   currentQuestion: 0,
@@ -155,6 +213,8 @@ const state = {
   selectedAnswer: null,
   answers: [],
 };
+
+let previouslyFocusedElement = null;
 
 startBtn.addEventListener('click', () => {
   document.querySelector('.hero').classList.add('quiz-started');
@@ -180,6 +240,17 @@ retakeBtn.addEventListener('click', () => {
   startQuiz();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
+
+if (glossaryBtn && closeGlossaryBtn && glossaryBackdrop) {
+  glossaryBtn.addEventListener('click', openGlossary);
+  closeGlossaryBtn.addEventListener('click', closeGlossary);
+  glossaryBackdrop.addEventListener('click', closeGlossary);
+}
+
+if (glossaryPanel && glossaryList) {
+  glossaryPanel.setAttribute('aria-hidden', 'true');
+  populateGlossary();
+}
 
 function startQuiz() {
   state.currentQuestion = 0;
@@ -334,6 +405,78 @@ function showResults() {
     const item = document.createElement('li');
     item.textContent = tip;
     resultsFacts.appendChild(item);
+  });
+}
+
+function openGlossary() {
+  if (!glossaryPanel || !glossaryBackdrop || !closeGlossaryBtn) return;
+  previouslyFocusedElement = document.activeElement;
+  glossaryPanel.classList.remove('hidden');
+  glossaryBackdrop.classList.remove('hidden');
+  glossaryPanel.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  glossaryPanel.focus();
+  closeGlossaryBtn.focus();
+  document.addEventListener('keydown', handleGlossaryKeydown);
+}
+
+function closeGlossary() {
+  if (!glossaryPanel || !glossaryBackdrop || !closeGlossaryBtn) return;
+  glossaryPanel.classList.add('hidden');
+  glossaryBackdrop.classList.add('hidden');
+  glossaryPanel.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  document.removeEventListener('keydown', handleGlossaryKeydown);
+  if (
+    previouslyFocusedElement &&
+    previouslyFocusedElement instanceof HTMLElement
+  ) {
+    previouslyFocusedElement.focus();
+  }
+}
+
+function handleGlossaryKeydown(event) {
+  if (event.key === 'Escape') {
+    closeGlossary();
+  } else if (event.key === 'Tab') {
+    trapGlossaryFocus(event);
+  }
+}
+
+function trapGlossaryFocus(event) {
+  if (!glossaryPanel) return;
+  const focusableElements = glossaryPanel.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+
+  if (focusableElements.length === 0) {
+    event.preventDefault();
+    return;
+  }
+
+  const firstElement = focusableElements[0];
+  const lastElement = focusableElements[focusableElements.length - 1];
+
+  if (event.shiftKey && document.activeElement === firstElement) {
+    event.preventDefault();
+    lastElement.focus();
+  } else if (!event.shiftKey && document.activeElement === lastElement) {
+    event.preventDefault();
+    firstElement.focus();
+  }
+}
+
+function populateGlossary() {
+  if (!glossaryList) return;
+  glossaryList.innerHTML = '';
+  glossaryTerms.forEach(({ term, definition }) => {
+    const termElement = document.createElement('dt');
+    termElement.textContent = term;
+
+    const definitionElement = document.createElement('dd');
+    definitionElement.textContent = definition;
+
+    glossaryList.append(termElement, definitionElement);
   });
 }
 
