@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Biodiversity Adventure Quiz</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero__content">
+        <h1>Biodiversity Adventure Quiz</h1>
+        <p>
+          Ready to test your knowledge about the living world? Work through each
+          question, learn new facts, and see how you can help protect Earth’s
+          amazing variety of life!
+        </p>
+        <button id="start-btn" class="btn btn--primary">Start the Quiz</button>
+      </div>
+      <div class="hero__badge" aria-hidden="true">Grade 7</div>
+    </header>
+
+    <main class="quiz" aria-live="polite">
+      <section class="quiz__status hidden" id="status-bar">
+        <div class="status__progress">
+          <span id="question-counter" class="status__label"></span>
+          <div class="progress">
+            <div id="progress-bar" class="progress__fill" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="status__score">
+          <span class="status__label">Score:</span>
+          <span id="score-display" class="status__value">0</span>
+        </div>
+      </section>
+
+      <section class="card hidden" id="question-card">
+        <h2 id="question-text"></h2>
+        <ul id="answer-list" class="answer-list" role="list"></ul>
+        <button id="next-btn" class="btn btn--primary btn--wide" disabled>
+          Next Question
+        </button>
+      </section>
+
+      <section class="card hidden" id="feedback-card">
+        <div id="feedback-icon" class="feedback__icon" aria-hidden="true">🌱</div>
+        <h2 id="feedback-title"></h2>
+        <p id="feedback-message"></p>
+        <button id="continue-btn" class="btn btn--primary btn--wide">
+          Keep Exploring
+        </button>
+      </section>
+
+      <section class="card hidden" id="results-card">
+        <h2>Your Biodiversity Score</h2>
+        <p id="results-summary"></p>
+        <ul id="results-facts" class="facts-list" role="list"></ul>
+        <div class="results__actions">
+          <button id="retake-btn" class="btn btn--secondary">Try Again</button>
+          <a
+            class="btn btn--link"
+            href="https://wwf.panda.org/discover/knowledge_hub/endangered_species/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Explore More
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        Curious to keep learning? Head outside, observe nature, and share what
+        you discover with friends and family.
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
