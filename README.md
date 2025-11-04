@@ -1,2 +1,2 @@
 # biodiversity-quiz.cooper.tips
-Biodiversity quiz for 7th graders
+Biodiversity practice quiz for 7th graders
