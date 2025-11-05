@@ -258,6 +258,45 @@ const multipleChoiceTemplates = [
   },
 ];
 
+const fillWordChoices = [
+  'biodiversity',
+  'conservation',
+  'ecosystem',
+  'photosynthesis',
+  'pollination',
+  'habitat',
+  'adaptation',
+  'succession',
+  'wetland',
+  'native',
+  'endemic',
+  'keystone',
+  'decomposer',
+  'decomposition',
+  'carbon',
+  'canopy',
+  'genetic',
+  'diversity',
+  'producer',
+  'consumer',
+  'migration',
+  'mutualism',
+  'symbiosis',
+  'soil',
+  'climate',
+  'food chain',
+  'food web',
+  'population',
+  'community',
+  'ecological',
+  'succulent',
+  'watershed',
+  'reforestation',
+  'bloom',
+  'predator',
+  'herbivore',
+  'omnivore',
+];
 const fillInTemplates = [
   {
     id: 'fill-1',
@@ -794,6 +833,10 @@ function prepareQuestionTemplate(template, iteration) {
     question.choiceElements = [];
   }
 
+  if (question.type === 'fill') {
+    question.wordBank = buildFillWordBank(question);
+  }
+
   if (question.type === 'drag') {
     question.wordBank = shuffleArray(question.wordBank);
     question.targets = shuffleArray(question.targets);
@@ -888,6 +931,20 @@ function renderFillIn(question) {
   input.spellcheck = false;
   input.placeholder = 'Type your answer';
 
+  const bankHint = document.createElement('p');
+  bankHint.className = 'fill-response__hint';
+  bankHint.textContent = 'Word bank (10 words):';
+
+  const bank = document.createElement('div');
+  bank.className = 'word-bank word-bank--fill';
+
+  (question.wordBank || []).forEach((word) => {
+    const chip = document.createElement('span');
+    chip.className = 'token token--static';
+    chip.textContent = word;
+    bank.appendChild(chip);
+  });
+
   input.addEventListener('input', () => {
     const value = input.value.trim();
     state.currentSelection = value;
@@ -903,7 +960,7 @@ function renderFillIn(question) {
   });
 
   question.inputRef = input;
-  container.append(statement, input);
+  container.append(statement, bankHint, bank, input);
   questionContent.appendChild(container);
 
   setTimeout(() => input.focus(), 150);
@@ -1355,6 +1412,29 @@ function populateGlossary() {
 
     glossaryList.append(termElement, definitionElement);
   });
+}
+
+function buildFillWordBank(question) {
+  const normalizedAnswer = normalizeAnswer(question.answer);
+  const bank = new Map();
+  bank.set(normalizedAnswer, question.answer);
+
+  shuffleArray(fillWordChoices).forEach((word) => {
+    if (bank.size >= 10) return;
+    const normalizedWord = normalizeAnswer(word);
+    if (!normalizedWord || bank.has(normalizedWord)) return;
+    bank.set(normalizedWord, word);
+  });
+
+  while (bank.size < 10) {
+    const filler = `eco-${Math.floor(Math.random() * 900 + 100)}`;
+    const normalizedFiller = normalizeAnswer(filler);
+    if (!bank.has(normalizedFiller)) {
+      bank.set(normalizedFiller, filler);
+    }
+  }
+
+  return shuffleArray(Array.from(bank.values()).slice(0, 10));
 }
 
 function shuffleArray(array) {

@@ -341,6 +341,12 @@ body {
   gap: 0.75rem;
 }
 
+.fill-response__hint {
+  margin: 0;
+  font-weight: 600;
+  color: var(--muted);
+}
+
 .fill-response__input {
   padding: 0.75rem 1rem;
   border-radius: var(--border-radius);
@@ -376,6 +382,11 @@ body {
   border: 2px dashed rgba(47, 123, 79, 0.3);
 }
 
+.word-bank--fill {
+  border-style: solid;
+  background: rgba(255, 255, 255, 0.78);
+}
+
 .token {
   background: #ffffff;
   border: 2px solid rgba(47, 123, 79, 0.4);
@@ -387,6 +398,12 @@ body {
   transition: transform var(--transition), box-shadow var(--transition),
     border var(--transition);
   user-select: none;
+}
+
+.token.token--static {
+  cursor: default;
+  border-style: solid;
+  user-select: text;
 }
 
 .token.token--used {
