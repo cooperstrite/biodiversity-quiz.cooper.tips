@@ -16,6 +16,20 @@
           question, learn new facts, and see how you can help protect Earth’s
           amazing variety of life!
         </p>
+        <div class="start-controls">
+          <label class="start-controls__label" for="question-count">
+            Number of Questions
+          </label>
+          <select id="question-count" class="start-controls__select">
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
         <button id="start-btn" class="btn btn--primary">Start the Quiz</button>
       </div>
       <div class="hero__badge" aria-hidden="true">Grade 7</div>
@@ -42,7 +56,7 @@
 
       <section class="card hidden" id="question-card">
         <h2 id="question-text"></h2>
-        <ul id="answer-list" class="answer-list" role="list"></ul>
+        <div id="question-content" class="question-content"></div>
         <button id="next-btn" class="btn btn--primary btn--wide" disabled>
           Next Question
         </button>
