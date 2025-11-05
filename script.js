@@ -2,10 +2,10 @@ const quizData = [
   {
     question: 'What does biodiversity describe?',
     answers: [
-      'The number of people living in a city',
+      'The total number of animals living in a habitat',
       'The variety of living things in an area',
-      'How many pets a family owns',
-      'The amount of rainfall in a year',
+      'How many habitats or biomes a region contains',
+      'The amount of natural resources like water and soil nutrients',
     ],
     correctIndex: 1,
     explanation:
@@ -14,10 +14,10 @@ const quizData = [
   {
     question: 'Why is a rainforest considered a biodiversity hotspot?',
     answers: [
-      'It only has one type of tree',
-      'It gets more sunlight than deserts',
+      'Its climate stays warm all year, so few species migrate away',
       'It supports many species living in a small area',
-      'It has no predators',
+      'Its soils store more nutrients than any other ecosystem on Earth',
+      'Its food webs are simple, with only a few species sharing resources',
     ],
     correctIndex: 2,
     explanation:
@@ -26,9 +26,9 @@ const quizData = [
   {
     question: 'Which human activity most often reduces biodiversity?',
     answers: [
-      'Protecting wetlands',
-      'Building wildlife corridors',
-      'Planting native flowers',
+      'Restoring wetlands that filter water and provide habitat',
+      'Designing wildlife crossings that reconnect ecosystems',
+      'Managing farms with crop rotation and cover crops',
       'Clearing forests for farms or cities',
     ],
     correctIndex: 3,
@@ -38,8 +38,8 @@ const quizData = [
   {
     question: 'What is an endangered species?',
     answers: [
-      'A species with a large and growing population',
-      'A species that lives only in zoos',
+      'A species that can live in many different ecosystems around the world',
+      'A species that scientists recently discovered in a rainforest',
       'A species that may soon disappear forever',
       'A species that migrates every season',
     ],
@@ -50,10 +50,10 @@ const quizData = [
   {
     question: 'How do pollinators like bees and butterflies support biodiversity?',
     answers: [
-      'They scare away predators',
-      'They carry seeds across oceans',
+      'They break down fallen leaves to recycle nutrients into soil',
+      'They carry seeds inside their stomachs and drop them far away',
       'They move pollen so plants can make seeds and fruits',
-      'They eat harmful insects',
+      'They make soil tunnels that let plant roots breathe',
     ],
     correctIndex: 2,
     explanation:
@@ -64,9 +64,9 @@ const quizData = [
       'If an invasive species moves into an ecosystem, what might happen?',
     answers: [
       'Biodiversity could drop because the invader pushes out native species',
-      'The ecosystem will always stay the same',
-      'Only the weather will change',
-      'Native species will instantly evolve new traits',
+      'Nutrient cycles usually speed up and support more native species',
+      'Pollination rates often increase for native plants',
+      'Only the largest predators notice the newcomer',
     ],
     correctIndex: 0,
     explanation:
@@ -76,9 +76,9 @@ const quizData = [
     question: 'What do food webs show us?',
     answers: [
       'How energy moves between living things in an ecosystem',
-      'How to cook food outdoors',
-      'How deep the ocean is',
-      'How rocks form underground',
+      'How water cycles between the ocean and the atmosphere',
+      'How soil nutrients are created by weathering rocks',
+      'How climate patterns shift between different biomes',
     ],
     correctIndex: 0,
     explanation:
@@ -87,10 +87,10 @@ const quizData = [
   {
     question: 'Which choice is a simple action you can take to support biodiversity?',
     answers: [
-      'Leave all lights on at night',
+      'Select ornamental plants from other continents to add new colors',
       'Plant a mix of native flowers for pollinators',
-      'Use more single-use plastic',
-      'Dump aquarium water in local streams',
+      'Keep lawns short by mowing every few days to discourage weeds',
+      'Spray broad-spectrum pesticides to make sure no insects remain',
     ],
     correctIndex: 1,
     explanation:
@@ -100,9 +100,9 @@ const quizData = [
     question: 'What happens when a keystone species disappears?',
     answers: [
       'The ecosystem may collapse or change dramatically',
-      'Nothing happens; keystone species are unimportant',
-      'Just one other species is affected',
-      'The climate quickly cools down',
+      'Only the population of the keystone species changes while others stay steady',
+      'Herbivores usually replace it without any major changes',
+      'Energy flow speeds up but species numbers stay the same',
     ],
     correctIndex: 0,
     explanation:
@@ -111,10 +111,10 @@ const quizData = [
   {
     question: 'Why do scientists monitor biodiversity over time?',
     answers: [
-      'To find new places for theme parks',
+      'To estimate how much timber can be harvested each season',
       'To track changes and keep ecosystems healthy',
-      'To sell rare animals',
-      'To stop all natural disasters',
+      'To pick which species should be moved to zoos permanently',
+      'To determine when ecosystems no longer need any conservation funding',
     ],
     correctIndex: 1,
     explanation:
