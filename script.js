@@ -16,16 +16,17 @@ const multipleChoiceTemplates = [
   {
     id: 'mc-2',
     type: 'multiple',
-    prompt: 'Why is a rainforest considered a biodiversity hotspot?',
+    prompt: 'What defines a biodiversity hotspot?',
     choices: [
-      'Its climate stays warm all year, so few species migrate away',
-      'It supports many species living in a small area',
-      'Its soils store more nutrients than any other ecosystem on Earth',
-      'Its food webs are simple, with only a few species sharing resources',
+      'A relatively small area with many endemic species that faces serious threats',
+      'A region with only one habitat type and a stable climate',
+      'An ecosystem where food webs are simple and easy to study',
+      'An area of farmland with high crop yields and few wild species',
     ],
-    answer: 'It supports many species living in a small area',
+    answer:
+      'A relatively small area with many endemic species that faces serious threats',
     explanation:
-      'Biodiversity hotspots host exceptional numbers of unique species in a small region, and rainforests pack thousands of species into tight spaces.',
+      'To be labeled a biodiversity hotspot, a place must host exceptional numbers of unique species and be under significant pressure from habitat loss or other threats.',
   },
   {
     id: 'mc-3',
@@ -117,16 +118,17 @@ const multipleChoiceTemplates = [
   {
     id: 'mc-9',
     type: 'multiple',
-    prompt: 'What happens when a keystone species disappears?',
+    prompt: 'Which statement best describes a keystone species?',
     choices: [
-      'The ecosystem may collapse or change dramatically',
-      'Only the population of the keystone species changes while others stay steady',
-      'Herbivores usually replace it without any major changes',
-      'Energy flow speeds up but species numbers stay the same',
+      'A species whose influence on ecosystem balance is far greater than its abundance suggests',
+      'A species that lives in only one habitat and nowhere else on Earth',
+      'A species that migrates long distances every season',
+      'A species that can survive in nearly any ecosystem on the planet',
     ],
-    answer: 'The ecosystem may collapse or change dramatically',
+    answer:
+      'A species whose influence on ecosystem balance is far greater than its abundance suggests',
     explanation:
-      'Keystone species support many others. Without them, food webs shift and entire communities can unravel.',
+      'Removing a keystone species can trigger cascading changes through food webs because so many other organisms depend on it.',
   },
   {
     id: 'mc-10',
@@ -256,6 +258,65 @@ const multipleChoiceTemplates = [
     explanation:
       'Science-based catch limits prevent overfishing so fish populations can renew themselves and remain diverse.',
   },
+  {
+    id: 'mc-19',
+    type: 'multiple',
+    prompt: 'How does climate change threaten biodiversity?',
+    choices: [
+      'It shifts temperature and precipitation patterns, stressing species and habitats',
+      'It creates more permanent sea ice for polar species to thrive on',
+      'It guarantees steady rainfall in every biome each year',
+      'It only affects predators, leaving other organisms unchanged',
+    ],
+    answer:
+      'It shifts temperature and precipitation patterns, stressing species and habitats',
+    explanation:
+      'Climate change alters growing seasons, storm intensity, and habitat conditions, making it harder for species to survive in their historic ranges.',
+  },
+  {
+    id: 'mc-20',
+    type: 'multiple',
+    prompt: 'Why is Doug Tallamy a key voice in biodiversity conservation?',
+    choices: [
+      'He popularized planting native species to rebuild food webs in yards and communities',
+      'He founded the first international seed bank for crop plants',
+      'He discovered the greenhouse effect driving modern climate change',
+      'He wrote the Endangered Species Act and all of its amendments',
+    ],
+    answer:
+      'He popularized planting native species to rebuild food webs in yards and communities',
+    explanation:
+      'Doug Tallamy’s research shows how native plants support insects and birds, inspiring people to turn their landscapes into habitat.',
+  },
+  {
+    id: 'mc-21',
+    type: 'multiple',
+    prompt: 'What is E.O. Wilson best known for?',
+    choices: [
+      'Championing the study of biodiversity and proposing the Half-Earth conservation vision',
+      'Inventing satellite technology that tracks migrating whales',
+      'Developing the first synthetic pesticide to control crop pests',
+      'Leading the mission that discovered hydrothermal vents',
+    ],
+    answer:
+      'Championing the study of biodiversity and proposing the Half-Earth conservation vision',
+    explanation:
+      'Biologist E.O. Wilson helped establish the field of conservation biology and argued for protecting half the planet for nature.',
+  },
+  {
+    id: 'mc-22',
+    type: 'multiple',
+    prompt: 'Which definition best describes extinction?',
+    choices: [
+      'The irreversible loss of an entire species from Earth',
+      'The temporary migration of a species to a new region',
+      'A short-term decline in a population that bounces back quickly',
+      'The removal of individuals from a zoo for relocation',
+    ],
+    answer: 'The irreversible loss of an entire species from Earth',
+    explanation:
+      'Extinction means every individual of a species is gone, so the species no longer exists anywhere on our planet.',
+  },
 ];
 
 const fillWordChoices = [
@@ -296,6 +357,11 @@ const fillWordChoices = [
   'predator',
   'herbivore',
   'omnivore',
+  'fragmentation',
+  'extirpation',
+  'hotspot',
+  'disturbance',
+  'restoration',
 ];
 const fillInTemplates = [
   {
@@ -314,11 +380,11 @@ const fillInTemplates = [
     type: 'fill',
     prompt: 'Fill in the blank with the best science word.',
     statement:
-      'A species found only in a single location is called an ______ species.',
-    answer: 'endemic',
-    acceptableAnswers: ['endemic'],
+      'A species facing a very high risk of extinction in the near future is labeled ______.',
+    answer: 'endangered',
+    acceptableAnswers: ['endangered'],
     explanation:
-      'Endemic species live naturally in one place and often need targeted protection.',
+      'Endangered species need rapid conservation action because their populations are dangerously low.',
   },
   {
     id: 'fill-3',
@@ -450,6 +516,53 @@ const fillInTemplates = [
     acceptableAnswers: ['carbon'],
     explanation:
       'The carbon cycle moves carbon through the atmosphere, biosphere, hydrosphere, and geosphere.',
+  },
+  {
+    id: 'fill-15',
+    type: 'fill',
+    prompt: 'Fill in the blank with the best science word.',
+    statement:
+      'Sudden ______ such as wildfires, invasive species, or pollution can disrupt ecosystems and food webs.',
+    answer: 'disturbances',
+    acceptableAnswers: ['disturbance', 'disturbances'],
+    explanation:
+      'Ecosystem disturbances can shift which species thrive, sometimes leading to long-term biodiversity loss.',
+  },
+];
+
+const clozeTemplates = [
+  {
+    id: 'cloze-1',
+    type: 'cloze',
+    prompt: 'Use the word bank to name the three pillars of biodiversity.',
+    statementParts: [
+      'The three pillars of biodiversity are ',
+      { blankId: 'pillar-genetic', placeholder: 'Pillar 1' },
+      ', ',
+      { blankId: 'pillar-species', placeholder: 'Pillar 2' },
+      ', and ',
+      { blankId: 'pillar-ecosystem', placeholder: 'Pillar 3' },
+      '.',
+    ],
+    answers: [
+      {
+        id: 'pillar-genetic',
+        answer: 'Genetic diversity',
+        acceptable: ['genetic diversity'],
+      },
+      {
+        id: 'pillar-species',
+        answer: 'Species diversity',
+        acceptable: ['species diversity'],
+      },
+      {
+        id: 'pillar-ecosystem',
+        answer: 'Ecosystem diversity',
+        acceptable: ['ecosystem diversity'],
+      },
+    ],
+    explanation:
+      'Biodiversity is often described through genetic diversity, species diversity, and ecosystem diversity working together.',
   },
 ];
 
@@ -628,11 +741,128 @@ const dragAndDropTemplates = [
     explanation:
       'Ecosystem services fall into provisioning, regulating, and cultural categories that all benefit people.',
   },
+  {
+    id: 'drag-7',
+    type: 'drag',
+    prompt: 'Match each term to the correct description of habitat change.',
+    targets: [
+      {
+        id: 'habitat-loss',
+        label: 'Habitat loss',
+        answer: 'An entire habitat is converted to another use so native species are displaced',
+      },
+      {
+        id: 'habitat-fragmentation',
+        label: 'Habitat fragmentation',
+        answer: 'A once-large habitat is split into isolated, smaller patches',
+      },
+      {
+        id: 'habitat-destruction',
+        label: 'Habitat destruction',
+        answer: 'Habitat remains but is so damaged it no longer supports native species',
+      },
+    ],
+    wordBank: [
+      'An entire habitat is converted to another use so native species are displaced',
+      'A once-large habitat is split into isolated, smaller patches',
+      'Habitat remains but is so damaged it no longer supports native species',
+    ],
+    explanation:
+      'Loss, fragmentation, and destruction each harm biodiversity in different ways, from removing habitat to breaking it into unusable pieces.',
+  },
+  {
+    id: 'drag-8',
+    type: 'drag',
+    prompt: 'Match each scale of ecosystem diversity with its description.',
+    targets: [
+      {
+        id: 'alpha-diversity',
+        label: 'Local (alpha) diversity',
+        answer: 'Variety of species within a single habitat or site',
+      },
+      {
+        id: 'beta-diversity',
+        label: 'Landscape (beta) diversity',
+        answer: 'Differences in species between nearby habitats',
+      },
+      {
+        id: 'gamma-diversity',
+        label: 'Regional (gamma) diversity',
+        answer: 'Total diversity across a broad region or biome',
+      },
+    ],
+    wordBank: [
+      'Variety of species within a single habitat or site',
+      'Differences in species between nearby habitats',
+      'Total diversity across a broad region or biome',
+    ],
+    explanation:
+      'Ecosystem diversity can be considered at local, landscape, and regional scales to capture how life varies across space.',
+  },
+  {
+    id: 'drag-9',
+    type: 'drag',
+    prompt: 'Match each endemic species to the place it naturally lives.',
+    targets: [
+      {
+        id: 'honeycreeper',
+        label: 'ʻIʻiwi honeycreeper',
+        answer: 'Native only to the Hawaiian Islands',
+      },
+      {
+        id: 'tortoise',
+        label: 'Galápagos giant tortoise',
+        answer: 'Found only in the Galápagos Islands',
+      },
+      {
+        id: 'lemur',
+        label: 'Ring-tailed lemur',
+        answer: 'Lives naturally only on Madagascar',
+      },
+    ],
+    wordBank: [
+      'Native only to the Hawaiian Islands',
+      'Found only in the Galápagos Islands',
+      'Lives naturally only on Madagascar',
+    ],
+    explanation:
+      'Endemic species have evolved in one location, so protecting their home habitats is essential for their survival.',
+  },
+  {
+    id: 'drag-10',
+    type: 'drag',
+    prompt: 'Match each term to its definition.',
+    targets: [
+      {
+        id: 'extirpation',
+        label: 'Extirpation',
+        answer: 'A species disappears from a local area but survives elsewhere',
+      },
+      {
+        id: 'extinction-term',
+        label: 'Extinction',
+        answer: 'A species disappears from Earth entirely',
+      },
+      {
+        id: 'recolonization',
+        label: 'Recolonization',
+        answer: 'A species returns to an area after being absent',
+      },
+    ],
+    wordBank: [
+      'A species disappears from a local area but survives elsewhere',
+      'A species disappears from Earth entirely',
+      'A species returns to an area after being absent',
+    ],
+    explanation:
+      'Knowing the difference between extirpation, extinction, and recolonization helps scientists track conservation progress.',
+  },
 ];
 
 const questionTemplates = [
   ...multipleChoiceTemplates,
   ...fillInTemplates,
+  ...clozeTemplates,
   ...dragAndDropTemplates,
 ];
 
@@ -741,6 +971,7 @@ const state = {
   responses: [],
   currentSelection: null,
   dragAssignments: {},
+  clozeAssignments: {},
 };
 
 let previouslyFocusedElement = null;
@@ -789,6 +1020,7 @@ function startQuiz() {
   state.responses = [];
   state.currentSelection = null;
   state.dragAssignments = {};
+  state.clozeAssignments = {};
 
   scoreDisplay.textContent = '0';
   progressBar.style.width = '0%';
@@ -837,6 +1069,12 @@ function prepareQuestionTemplate(template, iteration) {
     question.wordBank = buildFillWordBank(question);
   }
 
+  if (question.type === 'cloze') {
+    question.wordBank = buildClozeWordBank(question);
+    question.blankRefs = {};
+    question.tokenRefs = {};
+  }
+
   if (question.type === 'drag') {
     question.wordBank = shuffleArray(question.wordBank);
     question.targets = shuffleArray(question.targets);
@@ -852,6 +1090,7 @@ function showQuestion() {
 
   state.currentSelection = null;
   state.dragAssignments = {};
+  state.clozeAssignments = {};
   nextBtn.disabled = true;
   nextBtn.textContent = 'Check Answer';
 
@@ -872,6 +1111,8 @@ function showQuestion() {
     renderMultipleChoice(question);
   } else if (question.type === 'fill') {
     renderFillIn(question);
+  } else if (question.type === 'cloze') {
+    renderCloze(question);
   } else if (question.type === 'drag') {
     renderDragAndDrop(question);
   }
@@ -964,6 +1205,153 @@ function renderFillIn(question) {
   questionContent.appendChild(container);
 
   setTimeout(() => input.focus(), 150);
+}
+
+function renderCloze(question) {
+  const container = document.createElement('div');
+  container.className = 'cloze';
+
+  question.blankRefs = {};
+  question.tokenRefs = {};
+
+  const statement = document.createElement('p');
+  statement.className = 'cloze__statement';
+
+  const sentenceFragment = document.createDocumentFragment();
+
+  question.statementParts.forEach((part) => {
+    if (typeof part === 'string') {
+      sentenceFragment.append(part);
+    } else if (part && typeof part === 'object' && part.blankId) {
+      const blank = document.createElement('button');
+      blank.type = 'button';
+      blank.className = 'cloze__blank';
+      blank.dataset.blankId = part.blankId;
+      blank.dataset.placeholder = part.placeholder || 'Select word';
+      blank.textContent = part.placeholder || 'Select word';
+      question.blankRefs[part.blankId] = blank;
+      sentenceFragment.appendChild(blank);
+    }
+  });
+
+  statement.appendChild(sentenceFragment);
+
+  const bankHint = document.createElement('p');
+  bankHint.className = 'fill-response__hint';
+  bankHint.textContent = 'Word bank (click a word, then click a blank to place it)';
+
+  const bank = document.createElement('div');
+  bank.className = 'word-bank word-bank--fill';
+
+  let activeToken = null;
+
+  const updateSelection = () => {
+    const filledIds = Object.keys(state.clozeAssignments);
+    const filled = question.answers.every((blank) => filledIds.includes(blank.id));
+    if (filled) {
+      state.currentSelection = { ...state.clozeAssignments };
+      nextBtn.disabled = false;
+    } else {
+      state.currentSelection = null;
+      nextBtn.disabled = true;
+    }
+  };
+
+  const releaseToken = (token) => {
+    const assignedBlankId = token.dataset.assignedBlank;
+    if (assignedBlankId) {
+      const blank = question.blankRefs[assignedBlankId];
+      if (blank) {
+        blank.textContent = blank.dataset.placeholder || 'Select word';
+        blank.classList.remove('filled', 'correct', 'incorrect');
+        delete blank.dataset.tokenId;
+      }
+      delete state.clozeAssignments[assignedBlankId];
+    }
+    token.classList.remove('token--used', 'token--active');
+    delete token.dataset.assignedBlank;
+    activeToken = null;
+    updateSelection();
+  };
+
+  const assignTokenToBlank = (token, blank) => {
+    if (token.dataset.assignedBlank === blank.dataset.blankId) {
+      releaseToken(token);
+      return;
+    }
+
+    if (token.dataset.assignedBlank) {
+      releaseToken(token);
+    }
+
+    if (blank.dataset.tokenId) {
+      const previousToken = question.tokenRefs[blank.dataset.tokenId];
+      if (previousToken) {
+        releaseToken(previousToken);
+      }
+    }
+
+    blank.textContent = token.dataset.value;
+    blank.classList.add('filled');
+    blank.dataset.tokenId = token.dataset.tokenId;
+
+    token.classList.add('token--used');
+    token.classList.remove('token--active');
+    token.dataset.assignedBlank = blank.dataset.blankId;
+
+    state.clozeAssignments[blank.dataset.blankId] = token.dataset.value;
+    activeToken = null;
+    updateSelection();
+  };
+
+  Object.entries(question.blankRefs).forEach(([blankId, blank]) => {
+    blank.addEventListener('click', () => {
+      if (activeToken) {
+        assignTokenToBlank(activeToken, blank);
+      } else if (blank.dataset.tokenId) {
+        const existingToken = question.tokenRefs[blank.dataset.tokenId];
+        if (existingToken) {
+          releaseToken(existingToken);
+        }
+      }
+    });
+  });
+
+  question.wordBank.forEach((value, index) => {
+    const token = document.createElement('button');
+    token.type = 'button';
+    token.className = 'token token--choice';
+    token.textContent = value;
+    token.dataset.value = value;
+    token.dataset.tokenId = `${question.sessionId}-choice-${index}`;
+
+    token.addEventListener('click', () => {
+      if (token.dataset.assignedBlank) {
+        releaseToken(token);
+        return;
+      }
+
+      if (activeToken && activeToken !== token) {
+        activeToken.classList.remove('token--active');
+      }
+
+      if (token.classList.contains('token--active')) {
+        token.classList.remove('token--active');
+        activeToken = null;
+      } else {
+        token.classList.add('token--active');
+        activeToken = token;
+      }
+    });
+
+    question.tokenRefs[token.dataset.tokenId] = token;
+    bank.appendChild(token);
+  });
+
+  container.append(statement, bankHint, bank);
+  questionContent.appendChild(container);
+
+  updateSelection();
 }
 
 function renderDragAndDrop(question) {
@@ -1231,6 +1619,37 @@ function evaluateQuestion(question) {
     };
   }
 
+  if (question.type === 'cloze') {
+    const results = question.answers.map((blank) => {
+      const response = state.clozeAssignments[blank.id] || '';
+      const normalized = normalizeAnswer(response);
+      const acceptable = [blank.answer, ...(blank.acceptable || [])]
+        .map(normalizeAnswer)
+        .filter(Boolean);
+      const isBlankCorrect = acceptable.includes(normalized);
+      return {
+        blankId: blank.id,
+        response,
+        expected: blank.answer,
+        isCorrect: isBlankCorrect,
+      };
+    });
+
+    const isCorrect = results.every((result) => result.isCorrect);
+    const correctSequence = question.answers
+      .map((blank) => blank.answer)
+      .join(', ');
+    const message = isCorrect
+      ? question.explanation
+      : `Correct order: ${correctSequence}. ${question.explanation}`;
+
+    return {
+      isCorrect,
+      message,
+      detail: { results },
+    };
+  }
+
   if (question.type === 'drag') {
     const assignments = state.currentSelection || {};
     const results = question.targets.map((target) => {
@@ -1282,6 +1701,20 @@ function applyQuestionFeedback(question, evaluation) {
     question.inputRef.classList.add(
       evaluation.isCorrect ? 'correct' : 'incorrect'
     );
+  }
+
+  if (question.type === 'cloze' && evaluation.detail?.results) {
+    evaluation.detail.results.forEach((result) => {
+      const blank = question.blankRefs?.[result.blankId];
+      if (blank) {
+        blank.classList.remove('correct', 'incorrect');
+        blank.classList.add(result.isCorrect ? 'correct' : 'incorrect');
+        blank.classList.add('filled');
+        if (!result.isCorrect) {
+          blank.textContent = result.expected;
+        }
+      }
+    });
   }
 
   if (question.type === 'drag' && evaluation.detail?.results) {
@@ -1418,6 +1851,37 @@ function buildFillWordBank(question) {
   const normalizedAnswer = normalizeAnswer(question.answer);
   const bank = new Map();
   bank.set(normalizedAnswer, question.answer);
+
+  shuffleArray(fillWordChoices).forEach((word) => {
+    if (bank.size >= 10) return;
+    const normalizedWord = normalizeAnswer(word);
+    if (!normalizedWord || bank.has(normalizedWord)) return;
+    bank.set(normalizedWord, word);
+  });
+
+  while (bank.size < 10) {
+    const filler = `eco-${Math.floor(Math.random() * 900 + 100)}`;
+    const normalizedFiller = normalizeAnswer(filler);
+    if (!bank.has(normalizedFiller)) {
+      bank.set(normalizedFiller, filler);
+    }
+  }
+
+  return shuffleArray(Array.from(bank.values()).slice(0, 10));
+}
+
+function buildClozeWordBank(question) {
+  const bank = new Map();
+
+  (question.answers || []).forEach((blank) => {
+    const acceptable = [blank.answer, ...(blank.acceptable || [])];
+    acceptable.forEach((entry) => {
+      const normalized = normalizeAnswer(entry);
+      if (normalized && !bank.has(normalized)) {
+        bank.set(normalized, blank.answer);
+      }
+    });
+  });
 
   shuffleArray(fillWordChoices).forEach((word) => {
     if (bank.size >= 10) return;
