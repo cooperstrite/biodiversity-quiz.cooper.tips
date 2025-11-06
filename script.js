@@ -963,6 +963,7 @@ const glossaryPanel = document.getElementById('glossary-panel');
 const glossaryList = document.getElementById('glossary-list');
 const closeGlossaryBtn = document.getElementById('close-glossary');
 const glossaryBackdrop = document.getElementById('glossary-backdrop');
+const themeToggleBtn = document.getElementById('theme-toggle');
 
 const state = {
   questionSet: [],
@@ -1011,6 +1012,8 @@ if (glossaryPanel && glossaryList) {
   glossaryPanel.setAttribute('aria-hidden', 'true');
   populateGlossary();
 }
+
+initializeTheme();
 
 function startQuiz() {
   const questionTarget = Number(questionCountSelect?.value) || 10;
@@ -1845,6 +1848,36 @@ function populateGlossary() {
 
     glossaryList.append(termElement, definitionElement);
   });
+}
+
+function initializeTheme() {
+  applyTheme('light');
+
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme =
+        document.documentElement.getAttribute('data-theme') || 'light';
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+    });
+  }
+}
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  updateThemeToggle(theme);
+}
+
+function updateThemeToggle(theme) {
+  if (!themeToggleBtn) return;
+  const isDark = theme === 'dark';
+  themeToggleBtn.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+  themeToggleBtn.setAttribute('aria-pressed', String(isDark));
+  themeToggleBtn.dataset.currentTheme = theme;
+  themeToggleBtn.setAttribute(
+    'title',
+    isDark ? 'Switch to light mode' : 'Switch to dark mode'
+  );
 }
 
 function buildFillWordBank(question) {
