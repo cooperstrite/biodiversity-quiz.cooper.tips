@@ -953,6 +953,7 @@ const feedbackIcon = document.getElementById('feedback-icon');
 const continueBtn = document.getElementById('continue-btn');
 const resultsCard = document.getElementById('results-card');
 const resultsSummary = document.getElementById('results-summary');
+const resultsTime = document.getElementById('results-time');
 const resultsFacts = document.getElementById('results-facts');
 const retakeBtn = document.getElementById('retake-btn');
 const scoreDisplay = document.getElementById('score-display');
@@ -973,6 +974,9 @@ const state = {
   currentSelection: null,
   dragAssignments: {},
   clozeAssignments: {},
+  startTime: null,
+  endTime: null,
+  elapsedMs: 0,
 };
 
 let previouslyFocusedElement = null;
@@ -1024,6 +1028,9 @@ function startQuiz() {
   state.currentSelection = null;
   state.dragAssignments = {};
   state.clozeAssignments = {};
+  state.startTime = Date.now();
+  state.endTime = null;
+  state.elapsedMs = 0;
 
   scoreDisplay.textContent = '0';
   progressBar.style.width = '0%';
@@ -1035,6 +1042,9 @@ function startQuiz() {
   questionCard.classList.remove('hidden');
   feedbackCard.classList.add('hidden');
   resultsCard.classList.add('hidden');
+  if (resultsTime) {
+    resultsTime.textContent = '';
+  }
 
   showQuestion();
 }
@@ -1741,6 +1751,18 @@ function showResults() {
   feedbackCard.classList.add('hidden');
   resultsCard.classList.remove('hidden');
   progressBar.style.width = '100%';
+  if (!state.endTime) {
+    state.endTime = Date.now();
+  }
+  if (state.startTime) {
+    state.elapsedMs = Math.max(0, state.endTime - state.startTime);
+  } else {
+    state.elapsedMs = 0;
+  }
+  if (resultsTime) {
+    const formattedDuration = formatDuration(state.elapsedMs);
+    resultsTime.textContent = `You completed the quiz in ${formattedDuration}.`;
+  }
 
   const total = state.questionSet.length;
   const score = state.score;
@@ -1770,6 +1792,31 @@ function showResults() {
     item.textContent = tip;
     resultsFacts.appendChild(item);
   });
+}
+
+function formatDuration(durationMs) {
+  if (!durationMs || durationMs <= 0) {
+    return '0 seconds';
+  }
+
+  const totalSeconds = Math.floor(durationMs / 1000);
+  const seconds = totalSeconds % 60;
+  const totalMinutes = Math.floor(totalSeconds / 60);
+  const minutes = totalMinutes % 60;
+  const hours = Math.floor(totalMinutes / 60);
+
+  const parts = [];
+  if (hours > 0) {
+    parts.push(`${hours} ${hours === 1 ? 'hour' : 'hours'}`);
+  }
+  if (minutes > 0) {
+    parts.push(`${minutes} ${minutes === 1 ? 'minute' : 'minutes'}`);
+  }
+  if (seconds > 0 || parts.length === 0) {
+    parts.push(`${seconds} ${seconds === 1 ? 'second' : 'seconds'}`);
+  }
+
+  return parts.join(' ');
 }
 
 function pickRandomTips(count) {

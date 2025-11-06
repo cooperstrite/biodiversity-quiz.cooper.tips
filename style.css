@@ -803,6 +803,13 @@ body {
   justify-content: center;
 }
 
+.results__time {
+  margin: 0.5rem 0 1.5rem;
+  font-weight: 600;
+  color: var(--muted-strong);
+  text-align: center;
+}
+
 .footer {
   text-align: center;
   padding: 2rem 1rem;
