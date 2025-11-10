@@ -871,61 +871,109 @@ const glossaryTerms = [
     term: 'Biodiversity',
     definition:
       'The variety of life in the world or in a specific habitat or ecosystem, including the diversity of species, genes, and ecosystems.',
+    examples: [
+      'Rainforests have high biodiversity because thousands of plant and animal species share the same habitat.',
+      'Coral reefs rely on biodiversity to stay resilient after storms and disease.',
+    ],
   },
   {
     term: 'Ecosystem',
     definition:
       'A community of living organisms interacting with each other and with the nonliving parts of their environment.',
+    examples: [
+      'A tide pool ecosystem includes crabs, algae, sunlight, and waves.',
+      'Prairie dogs, grasses, soil, and air all work together within a grassland ecosystem.',
+    ],
   },
   {
     term: 'Biodiversity hotspot',
     definition:
       'A region that has an exceptional concentration of unique species but is threatened with destruction.',
+    examples: [
+      'Madagascar is a biodiversity hotspot because many of its species live nowhere else on Earth.',
+      'California’s Floristic Province is a hotspot facing pressure from drought and development.',
+    ],
   },
   {
     term: 'Endangered species',
     definition:
       'A species that is seriously at risk of extinction without protection and recovery efforts.',
+    examples: [
+      'The red panda is endangered because deforestation is shrinking its habitat.',
+      'Sea turtles remain endangered when nesting beaches are disturbed.',
+    ],
   },
   {
     term: 'Pollinator',
     definition:
       'An animal that moves pollen between flowers, enabling plants to produce seeds and fruit.',
+    examples: [
+      'Bees pollinate apple blossoms so orchards can produce fruit.',
+      'Hummingbirds act as pollinators when they visit tubular flowers.',
+    ],
   },
   {
     term: 'Invasive species',
     definition:
       'A non-native organism that spreads quickly and causes harm to the environment, economy, or human health.',
+    examples: [
+      'Zebra mussels are invasive in the Great Lakes and clog water intake pipes.',
+      'Kudzu vines crowd out native plants in the southeastern United States.',
+    ],
   },
   {
     term: 'Food web',
     definition:
       'A diagram that shows how multiple food chains overlap and how energy moves through an ecosystem.',
+    examples: [
+      'In a pond food web, algae feed insects that are eaten by frogs and herons.',
+      'Removing top predators can upset the balance of an entire food web.',
+    ],
   },
   {
     term: 'Keystone species',
     definition:
       'A species whose impact on an ecosystem is much greater than its abundance, helping hold the community together.',
+    examples: [
+      'Sea otters are keystone species because they control sea urchins and protect kelp forests.',
+      'Beavers act as keystone species by building dams that create wetlands.',
+    ],
   },
   {
     term: 'Native species',
     definition:
       'A species that occurs naturally in a region or ecosystem without human introduction.',
+    examples: [
+      'Monarch butterfly caterpillars rely on native milkweed plants for food.',
+      'Saguaro cacti are native to the Sonoran Desert.',
+    ],
   },
   {
     term: 'Conservation',
     definition:
       'The protection and careful management of natural resources and biodiversity.',
+    examples: [
+      'Conservation programs protect nesting sites for endangered birds.',
+      'Setting aside marine reserves is a conservation strategy for coral reefs.',
+    ],
   },
   {
     term: 'Genetic diversity',
     definition:
       'The range of different inherited traits within a species, which helps populations adapt to change.',
+    examples: [
+      'Farmers plant several corn varieties to keep genetic diversity in their crops.',
+      'Genetic diversity helps species survive disease outbreaks.',
+    ],
   },
   {
     term: 'Ecosystem services',
     definition:
       'Benefits people obtain from ecosystems, such as clean water, food, and recreation.',
+    examples: [
+      'Wetlands provide ecosystem services by filtering pollutants from water.',
+      'Urban trees offer ecosystem services like cooling shade and cleaner air.',
+    ],
   },
 ];
 
@@ -962,6 +1010,7 @@ const progressBar = document.getElementById('progress-bar');
 const glossaryBtn = document.getElementById('open-glossary');
 const glossaryPanel = document.getElementById('glossary-panel');
 const glossaryList = document.getElementById('glossary-list');
+const glossaryDetails = document.getElementById('glossary-details');
 const closeGlossaryBtn = document.getElementById('close-glossary');
 const glossaryBackdrop = document.getElementById('glossary-backdrop');
 const themeToggleBtn = document.getElementById('theme-toggle');
@@ -980,6 +1029,7 @@ const state = {
 };
 
 let previouslyFocusedElement = null;
+let activeGlossaryButton = null;
 
 startBtn.addEventListener('click', () => {
   document.querySelector('.hero').classList.add('quiz-started');
@@ -1886,22 +1936,85 @@ function trapGlossaryFocus(event) {
 function populateGlossary() {
   if (!glossaryList) return;
   glossaryList.innerHTML = '';
-  glossaryTerms.forEach(({ term, definition }) => {
-    const item = document.createElement('div');
-    item.className = 'glossary-item';
-    item.setAttribute('role', 'listitem');
 
-    const termElement = document.createElement('p');
-    termElement.className = 'glossary-item__term';
-    termElement.textContent = term;
+  let firstButton = null;
 
-    const definitionElement = document.createElement('p');
-    definitionElement.className = 'glossary-item__definition';
-    definitionElement.textContent = definition;
+  glossaryTerms.forEach((entry, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'glossary-term-btn';
+    button.textContent = entry.term;
+    button.setAttribute('aria-pressed', 'false');
+    button.setAttribute('role', 'listitem');
+    button.addEventListener('click', () => selectGlossaryTerm(entry, button));
+    glossaryList.appendChild(button);
 
-    item.append(termElement, definitionElement);
-    glossaryList.appendChild(item);
+    if (index === 0) {
+      firstButton = button;
+    }
   });
+
+  if (firstButton) {
+    selectGlossaryTerm(glossaryTerms[0], firstButton);
+  } else {
+    renderGlossaryDetails();
+  }
+}
+
+function selectGlossaryTerm(entry, button) {
+  if (!button || !glossaryDetails) return;
+
+  if (activeGlossaryButton && activeGlossaryButton !== button) {
+    activeGlossaryButton.classList.remove('glossary-term-btn--active');
+    activeGlossaryButton.setAttribute('aria-pressed', 'false');
+  }
+
+  activeGlossaryButton = button;
+  button.classList.add('glossary-term-btn--active');
+  button.setAttribute('aria-pressed', 'true');
+  renderGlossaryDetails(entry);
+}
+
+function renderGlossaryDetails(entry) {
+  if (!glossaryDetails) return;
+
+  if (!entry) {
+    glossaryDetails.innerHTML = '';
+    const prompt = document.createElement('p');
+    prompt.className = 'glossary__definition';
+    prompt.textContent =
+      'Choose a word button to see its definition and examples.';
+    glossaryDetails.appendChild(prompt);
+    return;
+  }
+
+  glossaryDetails.innerHTML = '';
+
+  const title = document.createElement('h4');
+  title.textContent = entry.term;
+
+  const definition = document.createElement('p');
+  definition.className = 'glossary__definition';
+  definition.textContent = entry.definition;
+
+  glossaryDetails.append(title, definition);
+
+  if (entry.examples && entry.examples.length > 0) {
+    const label = document.createElement('strong');
+    label.textContent = 'Examples';
+
+    const list = document.createElement('ul');
+    list.className = 'glossary__examples';
+
+    entry.examples.forEach((example) => {
+      const item = document.createElement('li');
+      item.className = 'glossary__example';
+      item.textContent = example;
+      list.appendChild(item);
+    });
+
+    glossaryDetails.append(label, list);
+  }
 }
 
 function initializeTheme() {
