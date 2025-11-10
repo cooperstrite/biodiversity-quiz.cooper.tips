@@ -133,12 +133,22 @@
           </p>
           <h3 class="glossary__subtitle">Key Words</h3>
           <div class="glossary__body">
-            <div
-              id="glossary-list"
-              class="glossary__list"
-              role="list"
-              aria-label="Glossary term buttons"
-            ></div>
+            <div class="glossary__list-panel">
+              <label class="sr-only" for="glossary-search">Search words</label>
+              <input
+                id="glossary-search"
+                class="glossary__search"
+                type="search"
+                placeholder="Search words"
+                autocomplete="off"
+              />
+              <div
+                id="glossary-list"
+                class="glossary__list"
+                role="list"
+                aria-label="Glossary term buttons"
+              ></div>
+            </div>
             <div
               id="glossary-details"
               class="glossary__details"

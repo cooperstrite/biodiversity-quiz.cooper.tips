@@ -1510,6 +1510,7 @@ const glossaryTriggers = document.querySelectorAll('[data-open-glossary]');
 const glossaryPanel = document.getElementById('glossary-panel');
 const glossaryList = document.getElementById('glossary-list');
 const glossaryDetails = document.getElementById('glossary-details');
+const glossarySearchInput = document.getElementById('glossary-search');
 const closeGlossaryBtn = document.getElementById('close-glossary');
 const glossaryBackdrop = document.getElementById('glossary-backdrop');
 const themeToggleBtn = document.getElementById('theme-toggle');
@@ -1529,6 +1530,8 @@ const state = {
 
 let previouslyFocusedElement = null;
 let activeGlossaryButton = null;
+let activeGlossaryTerm = null;
+let filteredGlossary = [...glossaryTerms];
 
 startBtn.addEventListener('click', () => {
   document.querySelector('.hero').classList.add('quiz-started');
@@ -1565,7 +1568,7 @@ if (glossaryTriggers.length && closeGlossaryBtn && glossaryBackdrop) {
 
 if (glossaryPanel && glossaryList) {
   glossaryPanel.setAttribute('aria-hidden', 'true');
-  populateGlossary();
+  populateGlossary(filteredGlossary);
 }
 
 initializeTheme();
@@ -2434,13 +2437,27 @@ function trapGlossaryFocus(event) {
   }
 }
 
-function populateGlossary() {
+function populateGlossary(entries = glossaryTerms) {
   if (!glossaryList) return;
   glossaryList.innerHTML = '';
 
-  let firstButton = null;
+  if (!entries.length) {
+    const emptyMessage = document.createElement('p');
+    emptyMessage.className = 'glossary__empty';
+    emptyMessage.textContent = 'No matching words yet. Adjust your search.';
+    glossaryList.appendChild(emptyMessage);
+    activeGlossaryButton = null;
+    activeGlossaryTerm = null;
+    renderGlossaryDetails();
+    return;
+  }
 
-  glossaryTerms.forEach((entry, index) => {
+  let firstButton = null;
+  let firstEntry = null;
+  let matchedButton = null;
+  let matchedEntry = null;
+
+  entries.forEach((entry, index) => {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = 'glossary-term-btn';
@@ -2452,11 +2469,19 @@ function populateGlossary() {
 
     if (index === 0) {
       firstButton = button;
+      firstEntry = entry;
+    }
+
+    if (entry.term === activeGlossaryTerm) {
+      matchedButton = button;
+      matchedEntry = entry;
     }
   });
 
-  if (firstButton) {
-    selectGlossaryTerm(glossaryTerms[0], firstButton);
+  if (matchedButton && matchedEntry) {
+    selectGlossaryTerm(matchedEntry, matchedButton);
+  } else if (firstButton && firstEntry) {
+    selectGlossaryTerm(firstEntry, firstButton);
   } else {
     renderGlossaryDetails();
   }
@@ -2471,9 +2496,35 @@ function selectGlossaryTerm(entry, button) {
   }
 
   activeGlossaryButton = button;
+  activeGlossaryTerm = entry.term;
   button.classList.add('glossary-term-btn--active');
   button.setAttribute('aria-pressed', 'true');
   renderGlossaryDetails(entry);
+}
+
+function handleGlossarySearch(event) {
+  const rawValue = event.target?.value || '';
+  const query = normalizeAnswer(rawValue);
+
+  if (!query) {
+    filteredGlossary = [...glossaryTerms];
+  } else {
+    filteredGlossary = glossaryTerms.filter(({ term }) =>
+      matchesGlossaryTerm(term, query)
+    );
+  }
+
+  populateGlossary(filteredGlossary);
+}
+
+function matchesGlossaryTerm(term, query) {
+  const normalizedTerm = normalizeAnswer(term);
+  if (!query) return true;
+  if (normalizedTerm.startsWith(query)) return true;
+
+  return normalizedTerm
+    .split(' ')
+    .some((part) => part && part.startsWith(query));
 }
 
 function renderGlossaryDetails(entry) {
@@ -2620,4 +2671,7 @@ function normalizeAnswer(value) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, ' ')
     .trim();
+}
+if (glossarySearchInput) {
+  glossarySearchInput.addEventListener('input', handleGlossarySearch);
 }
