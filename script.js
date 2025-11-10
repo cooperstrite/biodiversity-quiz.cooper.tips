@@ -1887,13 +1887,20 @@ function populateGlossary() {
   if (!glossaryList) return;
   glossaryList.innerHTML = '';
   glossaryTerms.forEach(({ term, definition }) => {
-    const termElement = document.createElement('dt');
+    const item = document.createElement('div');
+    item.className = 'glossary-item';
+    item.setAttribute('role', 'listitem');
+
+    const termElement = document.createElement('p');
+    termElement.className = 'glossary-item__term';
     termElement.textContent = term;
 
-    const definitionElement = document.createElement('dd');
+    const definitionElement = document.createElement('p');
+    definitionElement.className = 'glossary-item__definition';
     definitionElement.textContent = definition;
 
-    glossaryList.append(termElement, definitionElement);
+    item.append(termElement, definitionElement);
+    glossaryList.appendChild(item);
   });
 }
 
