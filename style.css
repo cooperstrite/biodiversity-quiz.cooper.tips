@@ -162,6 +162,17 @@ body {
   padding-bottom: 2rem;
 }
 
+.hero__glossary-btn {
+  margin-top: 0.75rem;
+  color: var(--primary-dark);
+}
+
+.hero__glossary-btn:hover,
+.hero__glossary-btn:focus-visible {
+  color: var(--primary);
+  background: rgba(47, 123, 79, 0.1);
+}
+
 .quiz {
   max-width: 720px;
   margin: 1.5rem auto 3.5rem;

@@ -1506,7 +1506,7 @@ const retakeBtn = document.getElementById('retake-btn');
 const scoreDisplay = document.getElementById('score-display');
 const questionCounter = document.getElementById('question-counter');
 const progressBar = document.getElementById('progress-bar');
-const glossaryBtn = document.getElementById('open-glossary');
+const glossaryTriggers = document.querySelectorAll('[data-open-glossary]');
 const glossaryPanel = document.getElementById('glossary-panel');
 const glossaryList = document.getElementById('glossary-list');
 const glossaryDetails = document.getElementById('glossary-details');
@@ -1555,8 +1555,10 @@ retakeBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-if (glossaryBtn && closeGlossaryBtn && glossaryBackdrop) {
-  glossaryBtn.addEventListener('click', openGlossary);
+if (glossaryTriggers.length && closeGlossaryBtn && glossaryBackdrop) {
+  glossaryTriggers.forEach((trigger) =>
+    trigger.addEventListener('click', openGlossary)
+  );
   closeGlossaryBtn.addEventListener('click', closeGlossary);
   glossaryBackdrop.addEventListener('click', closeGlossary);
 }
