@@ -286,7 +286,7 @@ const multipleChoiceTemplates = [
     answer:
       'He popularized planting native species to rebuild food webs in yards and communities',
     explanation:
-      'Doug Tallamy’s research shows how native plants support insects and birds, inspiring people to turn their landscapes into habitat.',
+      "Doug Tallamy's research shows how native plants support insects and birds, inspiring people to turn their landscapes into habitat.",
   },
   {
     id: 'mc-21',
@@ -493,7 +493,7 @@ const fillInTemplates = [
     answer: 'ecological',
     acceptableAnswers: ['ecological'],
     explanation:
-      'An ecological footprint shows how our resource use compares to Earth’s ability to renew those resources.',
+      "An ecological footprint shows how our resource use compares to Earth's ability to renew those resources.",
   },
   {
     id: 'fill-13',
@@ -868,111 +868,610 @@ const questionTemplates = [
 
 const glossaryTerms = [
   {
-    term: 'Biodiversity',
+    term: 'Adaptation',
     definition:
-      'The variety of life in the world or in a specific habitat or ecosystem, including the diversity of species, genes, and ecosystems.',
+      'A heritable trait or behavior that helps a species survive in its environment.',
     examples: [
-      'Rainforests have high biodiversity because thousands of plant and animal species share the same habitat.',
-      'Coral reefs rely on biodiversity to stay resilient after storms and disease.',
+      'Thick polar bear fur is an adaptation to frigid Arctic winters.',
+      'Cacti spines are adaptations that limit water loss and deter herbivores.',
     ],
   },
   {
-    term: 'Ecosystem',
-    definition:
-      'A community of living organisms interacting with each other and with the nonliving parts of their environment.',
+    term: 'Atmosphere',
+    definition: 'The blanket of gases that surrounds Earth and supports life.',
     examples: [
-      'A tide pool ecosystem includes crabs, algae, sunlight, and waves.',
-      'Prairie dogs, grasses, soil, and air all work together within a grassland ecosystem.',
+      "Earth's atmosphere supplies the oxygen we breathe.",
+      "Greenhouse gases in the atmosphere trap heat and influence climate.",
+    ],
+  },
+  {
+    term: 'Biodiversity',
+    definition:
+      'The variety of life in the world or in a specific habitat, including genes, species, and ecosystems.',
+    examples: [
+      'Rainforests have high biodiversity because thousands of plant and animal species share one habitat.',
+      'Coral reefs rely on biodiversity to stay resilient after storms or disease.',
     ],
   },
   {
     term: 'Biodiversity hotspot',
     definition:
-      'A region that has an exceptional concentration of unique species but is threatened with destruction.',
+      'A region with many unique species that is losing habitat or facing severe threats.',
     examples: [
       'Madagascar is a biodiversity hotspot because many of its species live nowhere else on Earth.',
-      'California’s Floristic Province is a hotspot facing pressure from drought and development.',
+      "California's Floristic Province is a hotspot pressured by drought and development.",
+    ],
+  },
+  {
+    term: 'Biosphere',
+    definition: 'All living organisms on Earth and the places they inhabit.',
+    examples: [
+      'Humans, forests, oceans, and microbes are all part of the biosphere.',
+      "Astronauts view Earth's biosphere as a thin, fragile layer on the planet.",
+    ],
+  },
+  {
+    term: 'Bloom',
+    definition:
+      'A rapid burst of flowering or algal growth triggered by favorable conditions.',
+    examples: [
+      'Desert wildflowers can bloom all at once after heavy rains.',
+      'Excess fertilizer can cause algal blooms in lakes.',
+    ],
+  },
+  {
+    term: 'Building wildlife corridors',
+    definition:
+      'Creating safe passages that reconnect separated habitats so animals can move freely.',
+    examples: [
+      'Wildlife overpasses above highways act as corridors for deer and bears.',
+      'Planting hedgerows between farms creates corridors for pollinators.',
+    ],
+  },
+  {
+    term: 'Canopy',
+    definition:
+      'The upper layer of leaves and branches that forms a roof over a forest.',
+    examples: [
+      'Monkeys travel through the rainforest canopy in search of fruit.',
+      'Canopy cover keeps the forest floor cool and moist.',
+    ],
+  },
+  {
+    term: 'Carbon cycle',
+    definition:
+      'The movement of carbon through air, water, soil, and living things.',
+    examples: [
+      'Trees pull carbon dioxide from the air during photosynthesis.',
+      'Burning fossil fuels releases stored carbon back into the atmosphere.',
+    ],
+  },
+  {
+    term: 'Climate',
+    definition: "The long-term pattern of temperature, rainfall, and wind in an area.",
+    examples: [
+      'Tropical climates stay warm and humid year-round.',
+      'Climate influences which crops farmers can grow.',
+    ],
+  },
+  {
+    term: 'Climate change',
+    definition:
+      "A long-term shift in Earth's climate, often driven by excess greenhouse gases.",
+    examples: [
+      'Glaciers are melting faster as climate change warms polar regions.',
+      'Shifting climate patterns force species to find cooler habitats.',
+    ],
+  },
+  {
+    term: 'Community',
+    definition:
+      'All the populations of different species that live and interact in one area.',
+    examples: [
+      'A pond community includes fish, plants, insects, and microbes.',
+      'Prairie communities rely on grasses, pollinators, and grazing animals.',
+    ],
+  },
+  {
+    term: 'Conservation',
+    definition:
+      'The careful protection and management of natural resources and biodiversity.',
+    examples: [
+      'Conservation programs guard sea turtle nesting beaches.',
+      'Indigenous fire stewardship is a conservation strategy that protects forests.',
+    ],
+  },
+  {
+    term: 'Consumer',
+    definition:
+      'An organism that gets energy by eating plants, animals, or other organic matter.',
+    examples: [
+      'Rabbits are consumers because they eat plants.',
+      'Hawks act as consumers when they hunt small mammals.',
+    ],
+  },
+  {
+    term: 'Cultural services',
+    definition:
+      "Ecosystem benefits that enrich people's lives through recreation, art, or inspiration.",
+    examples: [
+      'National parks provide cultural services by offering scenic places to explore.',
+      'Traditional stories often honor animals that deliver cultural ecosystem services.',
+    ],
+  },
+  {
+    term: 'Cutting back plastic use',
+    definition:
+      'Reducing single-use plastics to keep rivers, soils, and oceans cleaner.',
+    examples: [
+      'Bringing a reusable bottle cuts plastic waste from drink containers.',
+      'Communities that ban plastic bags see less trash in waterways.',
+    ],
+  },
+  {
+    term: 'Decomposer',
+    definition:
+      'An organism that breaks down dead plants and animals into nutrients.',
+    examples: [
+      'Fungi act as decomposers when they digest fallen logs.',
+      'Earthworms are decomposers that recycle leaf litter into soil.',
+    ],
+  },
+  {
+    term: 'Decomposition',
+    definition:
+      'The process of breaking down dead material so nutrients return to the ecosystem.',
+    examples: [
+      'Compost piles speed up decomposition of food scraps.',
+      'Decomposition frees nutrients that new plants need to grow.',
+    ],
+  },
+  {
+    term: 'Deforestation',
+    definition: 'The clearing of forests for farms, roads, or other development.',
+    examples: [
+      'Tropical deforestation removes habitat for orangutans.',
+      'Reducing deforestation keeps more carbon stored in trees.',
+    ],
+  },
+  {
+    term: 'Disturbance',
+    definition:
+      'A sudden event such as fire, flood, or invasive species that disrupts an ecosystem.',
+    examples: [
+      'Hurricanes can be natural disturbances that reshape coastlines.',
+      'Pollution spills act as disturbances that stress river life.',
+    ],
+  },
+  {
+    term: 'Ecosystem',
+    definition:
+      'A community of living organisms interacting with each other and with their physical environment.',
+    examples: [
+      'Tide pools are tiny ecosystems filled with crabs, algae, and sunlight.',
+      'A grassland ecosystem links soil microbes, bison, and prairie winds.',
+    ],
+  },
+  {
+    term: 'Ecological',
+    definition:
+      'Describes the relationships between living things and their surroundings.',
+    examples: [
+      'Planting native flowers is an ecological action that supports pollinators.',
+      'Ecological research helps us understand how food webs respond to change.',
+    ],
+  },
+  {
+    term: 'Ecosystem diversity',
+    definition:
+      'The variety of habitats, communities, and ecological processes in a region.',
+    examples: [
+      'A national park with forests, wetlands, and deserts shows high ecosystem diversity.',
+      'Protecting rivers and grasslands together preserves ecosystem diversity.',
+    ],
+  },
+  {
+    term: 'Ecosystem services',
+    definition:
+      'Benefits that people obtain from ecosystems, such as food, clean water, and recreation.',
+    examples: [
+      'Wetlands filter pollutants and provide clean drinking water.',
+      'Urban trees deliver ecosystem services by cooling neighborhoods.',
     ],
   },
   {
     term: 'Endangered species',
     definition:
-      'A species that is seriously at risk of extinction without protection and recovery efforts.',
+      'A species that faces a very high risk of extinction without protection.',
     examples: [
-      'The red panda is endangered because deforestation is shrinking its habitat.',
+      'Red pandas are endangered because deforestation shrinks their habitat.',
       'Sea turtles remain endangered when nesting beaches are disturbed.',
     ],
   },
   {
-    term: 'Pollinator',
-    definition:
-      'An animal that moves pollen between flowers, enabling plants to produce seeds and fruit.',
+    term: 'Endemic species',
+    definition: 'A species that naturally occurs in only one geographic area.',
     examples: [
-      'Bees pollinate apple blossoms so orchards can produce fruit.',
-      'Hummingbirds act as pollinators when they visit tubular flowers.',
+      'Lemurs are endemic to Madagascar.',
+      'The ʻIʻiwi honeycreeper is endemic to the Hawaiian Islands.',
     ],
   },
   {
-    term: 'Invasive species',
+    term: 'Extinction',
     definition:
-      'A non-native organism that spreads quickly and causes harm to the environment, economy, or human health.',
+      'The permanent loss of every individual in a species from Earth.',
     examples: [
-      'Zebra mussels are invasive in the Great Lakes and clog water intake pipes.',
-      'Kudzu vines crowd out native plants in the southeastern United States.',
+      'Passenger pigeons went extinct in the early 1900s.',
+      'Scientists work to keep critically endangered frogs from extinction.',
+    ],
+  },
+  {
+    term: 'Extirpation',
+    definition:
+      'The disappearance of a species from a local area while it survives elsewhere.',
+    examples: [
+      'Wolves were extirpated from much of the lower 48 United States.',
+      'Prairie chickens face local extirpation when grasslands are converted.',
+    ],
+  },
+  {
+    term: 'Food chain',
+    definition:
+      'A sequence that shows how energy moves from producers to consumers and predators.',
+    examples: [
+      'Grass → grasshopper → frog → heron is a simple food chain.',
+      'Disrupting one link in a food chain affects everything above it.',
     ],
   },
   {
     term: 'Food web',
     definition:
-      'A diagram that shows how multiple food chains overlap and how energy moves through an ecosystem.',
+      'A diagram of interconnected food chains that shows how energy flows through an ecosystem.',
     examples: [
       'In a pond food web, algae feed insects that are eaten by frogs and herons.',
       'Removing top predators can upset the balance of an entire food web.',
     ],
   },
   {
-    term: 'Keystone species',
+    term: 'Galápagos giant tortoise',
     definition:
-      'A species whose impact on an ecosystem is much greater than its abundance, helping hold the community together.',
+      'A large tortoise found only on the Galápagos Islands and famous for its longevity.',
     examples: [
-      'Sea otters are keystone species because they control sea urchins and protect kelp forests.',
-      'Beavers act as keystone species by building dams that create wetlands.',
-    ],
-  },
-  {
-    term: 'Native species',
-    definition:
-      'A species that occurs naturally in a region or ecosystem without human introduction.',
-    examples: [
-      'Monarch butterfly caterpillars rely on native milkweed plants for food.',
-      'Saguaro cacti are native to the Sonoran Desert.',
-    ],
-  },
-  {
-    term: 'Conservation',
-    definition:
-      'The protection and careful management of natural resources and biodiversity.',
-    examples: [
-      'Conservation programs protect nesting sites for endangered birds.',
-      'Setting aside marine reserves is a conservation strategy for coral reefs.',
+      'Galápagos giant tortoises disperse seeds as they roam the islands.',
+      'Conservationists hatch Galápagos tortoise eggs to boost wild populations.',
     ],
   },
   {
     term: 'Genetic diversity',
     definition:
-      'The range of different inherited traits within a species, which helps populations adapt to change.',
+      'The variety of inherited traits within a species that helps populations adapt.',
     examples: [
       'Farmers plant several corn varieties to keep genetic diversity in their crops.',
       'Genetic diversity helps species survive disease outbreaks.',
     ],
   },
   {
-    term: 'Ecosystem services',
+    term: 'Habitat',
     definition:
-      'Benefits people obtain from ecosystems, such as clean water, food, and recreation.',
+      'The place where a species naturally lives and finds food, water, and shelter.',
     examples: [
-      'Wetlands provide ecosystem services by filtering pollutants from water.',
-      'Urban trees offer ecosystem services like cooling shade and cleaner air.',
+      'Mangrove forests provide habitat for juvenile fish.',
+      'Prairie dog burrows create habitat for snakes and owls.',
+    ],
+  },
+  {
+    term: 'Habitat destruction',
+    definition:
+      'Damage to a habitat so severe that it can no longer support the species that lived there.',
+    examples: [
+      'Oil spills can cause habitat destruction along coasts.',
+      'Heavy mining equipment may leave soil too toxic for plants to regrow.',
+    ],
+  },
+  {
+    term: 'Habitat fragmentation',
+    definition:
+      'When a large habitat is split into smaller, isolated patches.',
+    examples: [
+      'Roads can fragment forests and limit animal movement.',
+      'Fragmented wetlands make it harder for frogs to find mates.',
+    ],
+  },
+  {
+    term: 'Habitat loss',
+    definition:
+      'The conversion of natural areas to another use so native species are displaced.',
+    examples: [
+      'Clearing forests for cattle ranching causes habitat loss.',
+      'Wetland draining leads to habitat loss for migratory birds.',
+    ],
+  },
+  {
+    term: 'Herbivore',
+    definition: 'An animal that feeds primarily on plants.',
+    examples: [
+      'Manatees are herbivores that graze on seagrass.',
+      'Caterpillars act as herbivores when they chew through leaves.',
+    ],
+  },
+  {
+    term: 'Hydrosphere',
+    definition: 'All the water on Earth, including oceans, lakes, rivers, and ice.',
+    examples: [
+      'The hydrosphere supplies the freshwater people drink.',
+      'Melting glaciers add water to the hydrosphere and raise sea levels.',
+    ],
+  },
+  {
+    term: 'ʻIʻiwi honeycreeper',
+    definition:
+      'A bright red Hawaiian bird with a curved bill specialized for sipping nectar.',
+    examples: [
+      'ʻIʻiwi honeycreepers pollinate native lobelia flowers.',
+      'Disease-carrying mosquitoes threaten the ʻIʻiwi honeycreeper at lower elevations.',
+    ],
+  },
+  {
+    term: 'Invasive species',
+    definition:
+      'A non-native organism that spreads quickly and causes harm to ecosystems, economies, or health.',
+    examples: [
+      'Zebra mussels are invasive in the Great Lakes and clog water pipes.',
+      'Kudzu vines crowd out native plants in the southeastern United States.',
+    ],
+  },
+  {
+    term: 'Keystone species',
+    definition:
+      'A species whose impact on ecosystem balance is much greater than its abundance.',
+    examples: [
+      'Sea otters control sea urchins and protect kelp forests as keystone species.',
+      'Beavers are keystone species because their dams create wetlands.',
+    ],
+  },
+  {
+    term: 'Landscape (beta) diversity',
+    definition:
+      'Differences in species between nearby habitats within a region.',
+    examples: [
+      'One valley might host oak forests while the next supports prairies, boosting beta diversity.',
+      'Conserving corridors between habitats maintains landscape diversity.',
+    ],
+  },
+  {
+    term: 'Local (alpha) diversity',
+    definition: 'The variety of species within a single habitat or site.',
+    examples: [
+      'A coral reef with many fish species has high alpha diversity.',
+      'Monitoring alpha diversity in school gardens tracks which insects visit.',
+    ],
+  },
+  {
+    term: 'Migration',
+    definition: 'The seasonal movement of animals from one region to another.',
+    examples: [
+      'Monarch butterflies migrate between Canada and Mexico each year.',
+      'Whales migrate to warm waters to give birth.',
+    ],
+  },
+  {
+    term: 'Mutualism',
+    definition:
+      'A type of symbiosis in which both species benefit from the interaction.',
+    examples: [
+      'Clownfish and anemones share a mutualistic partnership.',
+      'Plants and pollinators engage in mutualism when both gain food and reproduction.',
+    ],
+  },
+  {
+    term: 'Native species',
+    definition:
+      'A species that occurs naturally in a region without human introduction.',
+    examples: [
+      'Saguaro cacti are native to the Sonoran Desert.',
+      'Monarch caterpillars rely on native milkweed for food.',
+    ],
+  },
+  {
+    term: 'Omnivore',
+    definition: 'An animal that eats both plants and other animals.',
+    examples: [
+      'Bears are omnivores that eat berries, insects, and fish.',
+      'Many birds are omnivores that switch diets with the seasons.',
+    ],
+  },
+  {
+    term: 'Photosynthesis',
+    definition:
+      'The process by which plants use sunlight, water, and carbon dioxide to make food and oxygen.',
+    examples: [
+      'Leaves look green because chlorophyll absorbs light for photosynthesis.',
+      'Seagrasses perform photosynthesis underwater to power coastal food webs.',
+    ],
+  },
+  {
+    term: 'Planting native hedges',
+    definition:
+      'Using local shrubs and trees to create living fences that shelter wildlife.',
+    examples: [
+      'Schools plant native hedges to offer berries and nesting sites for birds.',
+      'Native hedges along farms give pollinators nectar all season.',
+    ],
+  },
+  {
+    term: 'Pollination',
+    definition:
+      'The transfer of pollen between flowers so plants can produce seeds and fruit.',
+    examples: [
+      'Wind pollination carries pine pollen between trees.',
+      'Pollination by bees lets apple orchards produce fruit.',
+    ],
+  },
+  {
+    term: 'Pollinator',
+    definition:
+      'An animal that moves pollen between flowers, enabling plants to reproduce.',
+    examples: [
+      'Bees pollinate apple blossoms so orchards can produce fruit.',
+      'Hummingbirds act as pollinators when they visit tubular flowers.',
+    ],
+  },
+  {
+    term: 'Pollution',
+    definition:
+      'Harmful substances that contaminate air, water, or soil and disrupt ecosystems.',
+    examples: [
+      'Plastic pollution entangles sea turtles and seabirds.',
+      'Air pollution from factories can damage tree leaves.',
+    ],
+  },
+  {
+    term: 'Population',
+    definition: 'All the individuals of one species living in the same place.',
+    examples: [
+      'A wolf population may cover several hundred square miles.',
+      'Scientists track frog populations to spot declines.',
+    ],
+  },
+  {
+    term: 'Predator',
+    definition: 'An animal that hunts and eats other animals.',
+    examples: [
+      'Owls are predators that swoop silently on rodents.',
+      'Sharks act as predators that keep ocean food webs balanced.',
+    ],
+  },
+  {
+    term: 'Producer',
+    definition:
+      'An organism, such as a plant or algae, that makes its own food using sunlight.',
+    examples: [
+      'Phytoplankton are producers that support marine food webs.',
+      'Prairie grasses are producers that capture solar energy.',
+    ],
+  },
+  {
+    term: 'Provisioning services',
+    definition:
+      'Ecosystem services that supply tangible products like food, water, or medicine.',
+    examples: [
+      'Fisheries provide provisioning services by offering protein for people.',
+      'Forests deliver provisioning services such as timber and berries.',
+    ],
+  },
+  {
+    term: 'Recolonization',
+    definition:
+      'When a species returns to a place after being absent for a period of time.',
+    examples: [
+      'Wolves recolonized parts of the U.S. Rockies after protections were added.',
+      'Beavers recolonize rivers when water quality improves.',
+    ],
+  },
+  {
+    term: 'Reforestation',
+    definition: 'Planting trees to restore forests that were cut down or damaged.',
+    examples: [
+      'Community reforestation events plant native saplings each spring.',
+      'Reforestation helps stabilize soils after wildfires.',
+    ],
+  },
+  {
+    term: 'Regional (gamma) diversity',
+    definition: 'The total diversity of species across a broad region or biome.',
+    examples: [
+      'All the habitats within the Amazon contribute to its high gamma diversity.',
+      'Comparing gamma diversity across continents shows global biodiversity patterns.',
+    ],
+  },
+  {
+    term: 'Regulating services',
+    definition:
+      'Ecosystem services that keep natural processes stable, such as climate regulation or flood control.',
+    examples: [
+      'Wetlands provide regulating services by absorbing flood waters.',
+      'Trees offer regulating services by storing carbon and cooling cities.',
+    ],
+  },
+  {
+    term: 'Restoration',
+    definition:
+      'Actions that repair damaged ecosystems so native species can thrive again.',
+    examples: [
+      'Volunteers plant dune grasses as part of coastal restoration.',
+      'Restoration crews remove invasive plants to let natives recover.',
+    ],
+  },
+  {
+    term: 'Ring-tailed lemur',
+    definition:
+      'A primate found only in Madagascar, recognized by its striped tail.',
+    examples: [
+      'Ring-tailed lemurs spend mornings sunbathing to warm up.',
+      'Habitat protection in Madagascar safeguards ring-tailed lemur troops.',
+    ],
+  },
+  {
+    term: 'Soil',
+    definition:
+      'The mix of minerals, organic matter, air, and water that supports plant life.',
+    examples: [
+      'Healthy soil stores carbon and feeds crops.',
+      'Soil organisms like fungi connect tree roots in forests.',
+    ],
+  },
+  {
+    term: 'Species diversity',
+    definition:
+      'The number and relative abundance of different species in an ecosystem.',
+    examples: [
+      'Coral reefs boast high species diversity with thousands of fish species.',
+      'Increasing species diversity in farms boosts pollination and pest control.',
+    ],
+  },
+  {
+    term: 'Succession',
+    definition:
+      'The gradual process by which ecosystems change and rebuild after a disturbance.',
+    examples: [
+      'Wildflowers colonize burned ground during early succession.',
+      'Over time, succession can turn an abandoned field back into a forest.',
+    ],
+  },
+  {
+    term: 'Succulent',
+    definition:
+      'A plant with thick, fleshy tissues adapted to store water in dry environments.',
+    examples: [
+      'Aloe plants are succulents that retain water in their leaves.',
+      'Succulent gardens use little irrigation because the plants store water.',
+    ],
+  },
+  {
+    term: 'Symbiosis',
+    definition:
+      'A close and long-term biological interaction between two different species.',
+    examples: [
+      'Lichens are a symbiosis between fungi and algae.',
+      'Cleaner fish and reef sharks maintain a symbiotic relationship.',
+    ],
+  },
+  {
+    term: 'Watershed',
+    definition:
+      'An area of land where all the water drains to the same river, lake, or ocean.',
+    examples: [
+      'Rain in the Mississippi River watershed eventually reaches the Gulf of Mexico.',
+      'Protecting forests in a watershed keeps downstream drinking water clean.',
+    ],
+  },
+  {
+    term: 'Wetland',
+    definition:
+      'Land that is saturated with water for part of the year and supports water-loving plants.',
+    examples: [
+      'Marshes and swamps are wetlands that shelter migrating birds.',
+      'Wetlands act like sponges, soaking up stormwater before it floods towns.',
     ],
   },
 ];
